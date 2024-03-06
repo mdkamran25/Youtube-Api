@@ -20,7 +20,7 @@ const SearchResultPage = async () => {
             <VideoList item={item} key={index} />
           ))
         : "Nothing to show"}
-        {fetchResult?.data?.items && <Pagination />}
+        {fetchResult?.data?.items && <Pagination pageInfo={fetchResult?.data?.pageInfo} />}
     </div>
   );
 };

@@ -21,7 +21,7 @@ const VideoList = ({ item, key }: Props) => {
           height={200}
         />
       </div>
-      <div className="Title md:pt-2 text-black hover:cursor-pointer hover:text-blue-600">
+      <div className="Title md:pt-2 text-start text-black hover:cursor-pointer hover:text-blue-600">
         <Link href={`https://www.youtube.com/watch?v=${item?.contentDetails?.videoId}`}>
           <span className="font-bold text-sm">{item?.snippet?.title}</span>
           <br />
