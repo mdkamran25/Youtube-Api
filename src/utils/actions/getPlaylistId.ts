@@ -3,7 +3,7 @@
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
-export const getPlaylistVideo = (formData: FormData) => {
+export const getPlaylistId = (formData: FormData) => {
     const reqType = formData.get('reqType');
     const url = formData.get('url') as string;
 

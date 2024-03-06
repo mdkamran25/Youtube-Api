@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import searchIcon from "../../assets/search-icon.svg";
-import { getPlaylistVideo } from "@/utils/actions/getPlaylistVideo";
+import { getPlaylistId } from "@/utils/actions/getPlaylistId";
 
 const Input = () => {
   return (
-    <form action={getPlaylistVideo}>
+    <form action={getPlaylistId}>
       <div className="flex flex-row justify-center">
         <div className="w-[20%] xl:w-[15%] justify-self-end  mb-6 md:mb-0">
           <div className="relative">

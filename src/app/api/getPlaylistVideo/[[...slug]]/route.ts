@@ -18,7 +18,7 @@ export async function GET(
       }
     }else if(params.slug.length === 2){
       const playlist = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=5pageToken=${params.slug[1]}&playlistId=${params.slug[0]}&key=${process.env.NEXT_PUBLIC_API_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=5&pageToken=${params.slug[1]}&playlistId=${params.slug[0]}&key=${process.env.NEXT_PUBLIC_API_KEY}`
       );
       const list = await playlist.json();
   
