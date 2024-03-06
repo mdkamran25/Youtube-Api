@@ -25,7 +25,7 @@ export default function RootLayout({
         </div>
         <div className="w-[100vw] h-full py-5">
           {children}
-          <div className="w-[90%] mx-auto py-3">{searchResult}</div>
+          <div className="w-[90%] md:w-[60%]  mx-auto py-3">{searchResult}</div>
         </div>
       </body>
     </html>
