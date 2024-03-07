@@ -1,23 +1,33 @@
-'use server'
+"use server";
 
-import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
+import { fetchPlaylistVideo } from "./fetchPlaylistVideo";
+import { getServerSession } from "next-auth";
+import { revalidateTag } from "next/cache";
 
-export const getPlaylistId = (formData: FormData) => {
-    const reqType = formData.get('reqType');
-    const url = formData.get('url') as string;
+export const getPlaylistId = async (formData: FormData) => {
+  
+    const session = await getServerSession();
+  console.log(session);
 
-    const matchResult = url.match(/list=([^&]+)/);
-    if (matchResult) {
-        const playlistId = matchResult[1];
-        if(playlistId){
-            cookies().set("id",playlistId)
-            
-            revalidateTag("fetchId");
-        }
-    } else {
-        console.log('URL does not contain playlist ID');
+  const reqType = formData.get("reqType");
+
+  const url = formData.get("url") as string;
+  console.log({ url });
+
+  const matchResult = url.match(/list=([^&]+)/);
+
+  if (matchResult) {
+
+    const playlistId = matchResult[1];
+
+    if (playlistId) {
+    //   console.log(playlistId);
+      cookies().set("id", playlistId)
+      await fetchPlaylistVideo("");
+    //   revalidateTag("fetchId");
     }
-
-
-}
+  } else {
+    console.log("URL does not contain playlist ID");
+  }
+};
