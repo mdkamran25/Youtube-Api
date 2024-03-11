@@ -1,6 +1,5 @@
 import { google, youtube_v3 } from "googleapis";
 import jwt from "jsonwebtoken";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 const OAuth2 = google.auth.OAuth2;
@@ -11,7 +10,6 @@ export async function GET({ headers }: { headers: Headers }) {
   try {
     const code = headers.get("code");
     console.log({ code });
-
     if (!code) {
       return NextResponse.redirect("http://localhost:3000/");
     }
@@ -22,39 +20,19 @@ export async function GET({ headers }: { headers: Headers }) {
       process.env.NEXT_PUBLIC_REDIRECT_URI!
     );
 
-    const token = await new Promise<object>((resolve, reject) => {
-      oauth2client.getToken(code!, (err, token) => {
-        if (err) {
-          console.error("Error while getting token:", err);
-          reject(err);
-        } else {
-          resolve(token);
-        }
-      });
-    });
 
-    console.log("Token received:", token);
+    const token = await oauth2client.getToken(code!);
 
-    // Check if the token is valid
-    if (!token) {
-      return NextResponse.json(
-        { error: "Token is invalid or empty" },
-        { status: 500 }
-      );
+    if (!token.tokens || !token.tokens.access_token) {
+      throw new Error("Access token is missing");
     }
 
-    const jwtToken = jwt.sign(token as object, process.env.NEXT_PUBLIC_JWT_SECRET!);
-    console.log("JWT Token:", jwtToken);
-
-    cookies().set("jwtToken", jwtToken);
-
-    const cookie = cookies().get("jwtToken");
-    console.log({ cookie });
-
-    oauth2client.credentials = jwt.verify(
-      cookie?.value as string,
+    const jwtToken = jwt.sign(
+      token.tokens as object,
       process.env.NEXT_PUBLIC_JWT_SECRET!
     );
+
+    oauth2client.credentials = token.tokens as TokenObject;
 
     const service = google.youtube({
       version: "v3",
@@ -66,14 +44,17 @@ export async function GET({ headers }: { headers: Headers }) {
       mine: true,
     });
 
-    console.log("response", response.data.items);
-
-    return NextResponse.json({ data: response.data.items }, { status: 200 });
-  } catch (error) {
-    console.error("Error occurred:", error);
     return NextResponse.json(
-      { error: error.message, reason: error.cause },
-      { status: 500 }
+      { data: response.data.items, token: jwtToken },
+      { status: 200 }
     );
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error("Error occurred:", error);
+      return NextResponse.json(
+        { error: error.message, reason: error.cause },
+        { status: 500 }
+      );
+    }
   }
 }

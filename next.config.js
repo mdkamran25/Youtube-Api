@@ -1,10 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    logging: {
-        fetches: {
-            fullUrl: true
-        }
-    }
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

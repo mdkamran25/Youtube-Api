@@ -1,5 +1,5 @@
 import Playlist from '@/components/playlist';
-import { headers } from 'next/headers'
+import { cookies} from 'next/headers'
 import { redirect } from 'next/navigation';
 
 export default async function YoutubePlaylist({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
@@ -15,20 +15,22 @@ export default async function YoutubePlaylist({ searchParams }: { searchParams: 
     }
 
     const data = await res.json();
-    console.log(data);
 
     return (
-      <main className="flex h-[100vh] w-[100vw] flex-col p-24">
-        <h1 className='h-1 text-2xl font-semibold'>Playlist in your channel</h1> <br/>
-        {data.data.length !== 0 ? <Playlist data={data.data} /> :<p className='block text-xl pt-4 ps-2'>No Playlist Found</p>}
-      </main>
+      <div className="flex w-[100vw] flex-col md:p-24 sm:p-10 p-5">
+        <h1 className='text-2xl font-semibold'>Playlists in your channel</h1>
+        {data.data.length !== 0 ? <Playlist data={data.data} token={data.token} /> :<p className='block text-xl pt-4 ps-2'> No Playlist Found 😔</p>}
+      </div>
     );
   } catch (error) {
+    if(error instanceof Error)
     console.error("Error fetching data:", error.message);
     return (
-      <main className="flex h-[100vh] w-[100vw] flex-row items-center justify-center p-24">
+      <div className="flex h-[100vh] w-[100vw] flex-row items-center justify-center p-24">
         {redirect("/")}
-      </main>
+        {/* {error?.message} */}
+        
+      </div>
     );
   }
 }
