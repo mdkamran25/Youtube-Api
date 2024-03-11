@@ -1,0 +1,3 @@
+interface LoginLink{
+    loginLink:string
+}
