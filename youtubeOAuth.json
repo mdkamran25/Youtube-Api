@@ -1,0 +1,16 @@
+{
+    "web": {
+        "client_id": "15143984099-un6hue9u71v6lnku5e3afe4bdmc3a905.apps.googleusercontent.com",
+        "project_id": "storied-storm-416313",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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",
+        "redirect_uris": [
+            "http://localhost:3000/youtube/playlist"
+        ],
+        "javascript_origins": [
+            "http://localhost:3000"
+        ]
+    }
+}

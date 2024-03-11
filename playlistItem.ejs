@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube Playlist Item</title>
+  </head>
+  <body>
+    <h1>Youtube Playlist</h1>
+    <% if (playlist.length === 0) { %>
+    <!-- Display a message when the playlist is empty -->
+    <p>You don't have any playlist.</p>
+    <% } else { %> <% playlist.forEach(item => { %>
+    <a
+      href="http://localhost:3000/playlistVideo?playlistId=<%= item.id %>"
+      style="cursor: pointer; color: black"
+      onmouseover="this.style.color='blue'"
+      onmouseout="this.style.color='black'"
+      onclick="callPlaylistVideoAPI('<%= item.id %>')"
+    >
+      <%= item.snippet.title %>: <%= item.id %>
+    </a></br></br>
+    <% }); %> <% } %>
+
+
+  </body>
+</html>
