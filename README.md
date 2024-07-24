@@ -93,10 +93,10 @@ Flex prodvide a dashboard where agent/ worker accept task initated by customer. 
       
 ### Add ENV File at backend side inside server file
 
-    Account_SID=
-    Auth_Token=
-    API_Key_SID=
-    API_Key_Secret=
-    Service_SID=
-    Workspace_SID=
-    Workflow_SID=
+    Account_SID= https://console.twilio.com/
+    Auth_Token= https://console.twilio.com/
+    API_Key_SID= https://console.twilio.com/us1/account/keys-credentials/api-keys
+    API_Key_Secret= https://console.twilio.com/us1/account/keys-credentials/api-keys
+    Service_SID= https://console.twilio.com/us1/develop/conversations/manage/services?frameUrl=%2Fconsole%2Fconversations%2Fservices%3Fx-target-region%3Dus1
+    Workspace_SID= https://console.twilio.com/us1/develop/taskrouter/workspaces
+    Workflow_SID= https://console.twilio.com/us1/service/taskrouter/WSf1f56762f2ecb6ce870dd1d686892320/taskrouter-workspace-workflows?frameUrl=%2Fconsole%2Ftaskrouter%2Fworkspaces%2FWSf1f56762f2ecb6ce870dd1d686892320%2Fworkflows%3Fx-target-region%3Dus1
