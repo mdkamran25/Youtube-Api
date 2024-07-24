@@ -4,7 +4,7 @@ This project itegrates Twilio Flex with a custom Frontend application using type
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Features](#features)
+- [Flex Dashboard](#Flex_Dashboard )
 - [Installation](#installation)
 - [Usage](#usage)
 - [Components](#components)
@@ -52,4 +52,51 @@ Flex prodvide a dashboard where agent/ worker accept task initated by customer. 
     twilio flex:plugins:release --name "First Plugin Release" --description "Enabling Plugin Sample" --plugin 
     plugin-sample@1.0.0
 
-  
+## A Web chat app through which user can connect with agent at Flex Dashboard.
+  In the branch <b>WebChat_App</b>, You will get the code where In Frontend part I used 
+  <b>Twilio/Conversation</b> lib which is helpfull in creating conversation. And In backend part I used 
+  <b>Twilio</b> lib by which I am creating interaction between customer and agent using interaction API. 
+
+  ### Prerequisite
+1. **Twilio Account**:
+   - Sign up for a Twilio account at [Twilio](https://www.twilio.com/try-twilio).
+   - Create a new Flex project from the Twilio Console.
+
+2. **Twilio Credentials**:
+   - Obtain your Twilio Account SID and Auth Token from the [Twilio Console](https://www.twilio.com/console).
+   - Set up a Flex Flow SID by following the [Twilio Flex Quickstart Guide](https://www.twilio.com/docs/flex/quickstart/getting-started).
+
+3. **Node.js and npm**:
+   - Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine. You can download and install them from the official websites.
+   - Verify the installation by running the following commands in your terminal:
+     ```bash
+     node -v
+     npm -v
+     ```
+
+4. **Basic Knowledge**:
+   - Familiarity with JavaScript/TypeScript.
+   - Understanding of React and its ecosystem.
+   - Basic understanding of REST APIs and HTTP requests.
+
+  ### Installation 
+      
+      - git clone
+      - cd WebChat_App
+      - npm install
+      - npm run dev
+      
+      For Backend 
+      - cd server
+      - npm install
+      - npm start
+      
+### Add ENV File at backend side inside server file
+
+    Account_SID=
+    Auth_Token=
+    API_Key_SID=
+    API_Key_Secret=
+    Service_SID=
+    Workspace_SID=
+    Workflow_SID=
