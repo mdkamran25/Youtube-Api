@@ -3,14 +3,20 @@ This project itegrates Twilio Flex with a custom Frontend application using type
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Flex Dashboard](#Flex_Dashboard )
-- [Installation](#installation)
-- [Usage](#usage)
-- [Components](#components)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
+- Introduction
+- Flex Dashboard
+- WebChat App
+  - Prerequisite
+  - Installation
+  - Env File
+  - TaskRouter Configuration
+- Telegram_Bot
+  - Telegram Bot
+  - Prerequisite
+  - Installation
+  - Env File
+- Contribution
+- License
 
 ## Introduction
 Flex prodvide a dashboard where agent/ worker accept task initated by customer. Task whould of different types and task here symbolize the communication which is initiated by customer. Task would be a call, sms, chat and any interaction through social media.
